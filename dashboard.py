@@ -245,7 +245,7 @@ def main():
                 title="Recency Distribution by Segment",
                 labels={'Recency': 'Days Since Last Purchase'}
             )
-            fig3.update_xaxis(tickangle=45)
+            fig3.update_xaxes(tickangle=45)
             st.plotly_chart(fig3, use_container_width=True)
         
         with col2:
@@ -256,7 +256,7 @@ def main():
                 title="Frequency Distribution by Segment",
                 labels={'Frequency': 'Purchase Frequency'}
             )
-            fig4.update_xaxis(tickangle=45)
+            fig4.update_xaxes(tickangle=45)
             st.plotly_chart(fig4, use_container_width=True)
         
         with col3:
@@ -267,7 +267,7 @@ def main():
                 title="Monetary Distribution by Segment",
                 labels={'Monetary': 'Total Spend ($)'}
             )
-            fig5.update_xaxis(tickangle=45)
+            fig5.update_xaxes(tickangle=45)
             st.plotly_chart(fig5, use_container_width=True)
     
     with tab3:
