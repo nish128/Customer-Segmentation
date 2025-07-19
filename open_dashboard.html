@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .dashboard-link {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+        .dashboard-link:hover {
+            transform: scale(1.05);
+            background: #ff5252;
+        }
+        .status {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .instructions {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        function checkDashboard() {
+            fetch('http://localhost:8501')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('status').innerHTML = '✅ Dashboard is running!';
+                        document.getElementById('openBtn').style.display = 'inline-block';
+                    } else {
+                        document.getElementById('status').innerHTML = '❌ Dashboard not responding';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('status').innerHTML = '❌ Cannot connect to dashboard';
+                });
+        }
+
+        function openDashboard() {
+            window.open('http://localhost:8501', '_blank');
+        }
+
+        // Check dashboard status on page load
+        window.onload = function() {
+            checkDashboard();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Customer Segmentation Dashboard</h1>
+        
+        <div class="status" id="status">
+            🔄 Checking dashboard status...
+        </div>
+
+        <a href="http://localhost:8501" class="dashboard-link" id="openBtn" style="display:none;">
+            🚀 Open Dashboard
+        </a>
+
+        <div class="instructions">
+            <h3>📋 Access Instructions:</h3>
+            <p><strong>Method 1:</strong> Click the button above</p>
+            <p><strong>Method 2:</strong> Open your browser and go to:</p>
+            <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px;">
+                http://localhost:8501
+            </code>
+            <p><strong>Method 3:</strong> If localhost doesn't work, try:</p>
+            <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px;">
+                http://172.30.0.2:8501
+            </code>
+        </div>
+
+        <div class="instructions">
+            <h3>🛠️ Troubleshooting:</h3>
+            <p>• Make sure JavaScript is enabled</p>
+            <p>• Try refreshing the page</p>
+            <p>• Check if port 8501 is blocked by firewall</p>
+            <p>• Try a different browser</p>
+        </div>
+    </div>
+</body>
+</html>
